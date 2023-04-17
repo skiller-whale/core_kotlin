@@ -13,31 +13,31 @@ import java.io.File
  *      2. Implement `findContainers` to determine which strings in `lookingGlass` contain
  *         a substring from `substrings`.
  *
- *  HINT: You can use `str.contains(other, ignoreCase = true)` to check whether
- *  `other` is a substring of `str`, ignoring character case.
+ *  HINT: You can use `str.contains(other)` to check whether `other` is a substring of `str`.
  */
 
-fun countOnes(text: List<String>): Unit {
-    print("The answer to the White Queen's sum is: ")
+fun countOnes(text: List<String>): Int {
 
     // 1. Your code goes here
 
 }
 
-fun findContainers(text: List<String>): Unit {
-    val substrings = arrayOf("Ion", "Gin", "Lice", "Vision", "Thin")
-    println("\nThe substrings are contained in:")
+val substrings = listOf("ion", "gin", "lice", "vision", "thin")
+
+fun findContainers(words: List<String>, substrings: List<String>): Array<String> {
     var containers: Array<String> = arrayOf()
 
     // 2. Your code goes here
 
-    containers.distinct().forEach { print("'${it}' ") }
+    return containers
 }
 
 /* <<< DO NOT EDIT THIS CODE >>> */
-
 val text = File("${__FILE__.getAbsoluteFile().parent}/../data/looking_glass.txt")
-println("${text.readText()}\n")
+println("${text.readText()}")
 val lookingGlass = text.readText().split("[.,!?\\s]+".toRegex())
-countOnes(lookingGlass)
-findContainers(lookingGlass)
+println("The answer to the White Queen's sum is: ${countOnes(lookingGlass)}\n")
+print("The substrings are: ")
+substrings.forEach { print ("'${it}' ") }
+print("\nThey are contained in: ")
+findContainers(lookingGlass, substrings).distinct().forEach { print ("'${it}' ")}

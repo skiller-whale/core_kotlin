@@ -2,8 +2,8 @@ import java.io.File
 
 /* ITERATING THROUGH INDICES
  * -------------------------
- * The code below iterates over an array `words`, finds each anagram of
- * the searchWord, and prints it along with its position in the array.
+ * The code below iterates over an array `words` that contains some common English words.
+ * It finds each anagram of the searchWord, and prints it along with its position in the array.
  *
  *     1. Refactor this code to use `words.withIndex()` or `words.forEachIndexed`.
  *
@@ -12,16 +12,16 @@ import java.io.File
 
 val searchWord = "loop" // Anagram subject
 
-fun getAnagrams(words: Array<String>, searchWord: String) {
-    println("Anagrams of '${searchWord}'...")
+fun getAnagrams(words: Array<String>, searchWord: String): Array<Pair<Int, String>> {
+    var anagrams: Array<Pair<Int, String>> = arrayOf()
 
     for (index in words.indices) {
         val word = words[index]
         if (word != searchWord && isAnagram(word, searchWord))
-            println("'${word}', at position $index")
+            anagrams += Pair(index, word)
     }
+    return anagrams
 }
-
 
 /* <<< DO NOT EDIT THIS CODE >>> */
 val file = File("${__FILE__.getAbsoluteFile().parent}/../data/words_list.txt")
@@ -38,4 +38,5 @@ fun isAnagram(word1: String, word2: String): Boolean {
     return word1.sortWord() == word2.sortWord()
 }
 
-getAnagrams(words, searchWord)
+println("Anagrams of '${searchWord}'...")
+getAnagrams(words, searchWord).forEach { println("'${it.second}', at position ${it.first}") }
