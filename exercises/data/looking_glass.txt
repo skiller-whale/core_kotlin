@@ -1,1 +1,9 @@
-'Manners are not taught in lessons,' said Alice. 'Lessons teach you to do sums, and things of that sort.' 'Can you do Addition?' the White Queen asked. 'What's one and one and one and one and one and one and one and one and one and one ?' 'I don't know,' said Alice. 'I lost count.' 'She can't do Addition,' the Red Queen interrupted, 'Can you do Subtraction? Take nine from eight.' 'Nine from eight I can't, you know,' Alice replied very readily: 'but—' 'She can't do Subtraction,' said the White Queen. 'Can you do Division? Divide a loaf by a knife—what's the answer to that?' 'I suppose—' Alice was beginning, but the Red Queen answered for her. 'Bread-and-butter, of course.'
+'Manners are not taught in lessons,' said Alice. 'Lessons teach you to do sums, and things of that sort.'
+'Can you do Addition?' the White Queen asked. 'What's one and one and one and one and one and one and one and one and one and one ?'
+'I don't know,' said Alice. 'I lost count.'
+'She can't do Addition,' the Red Queen interrupted, 'Can you do Subtraction? Take nine from eight.'
+'Nine from eight I can't, you know,' Alice replied very readily: 'but—'
+'She can't do Subtraction,' said the White Queen.
+'Can you do Division? Divide a loaf by a knife—what's the answer to that?'
+'I suppose—' Alice was beginning, but the Red Queen answered for her.
+'Bread-and-butter, of course.'
