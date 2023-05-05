@@ -2,6 +2,9 @@
 
 FROM eclipse-temurin:17
 
+RUN echo -e '#!/bin/sh\necho kotlinc -J-ea -script "$@"' > /usr/local/bin/run_kts && \
+    chmod +x /usr/local/bin/run_kts
+
 # update from https://github.com/JetBrains/kotlin/releases
 ARG version=1.8.10
 
