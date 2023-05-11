@@ -12,4 +12,7 @@ RUN ln -s /usr/local/kotlinc/bin/kotlin /usr/local/bin
 RUN ln -s /usr/local/kotlinc/bin/kotlinc /usr/local/bin
 RUN kotlin -e 'println("Hello from Kotlin")'
 
+RUN printf '#!/bin/sh\nexec kotlinc -J-ea -script "$@"' > /usr/local/bin/run_kts && \
+    chmod +x /usr/local/bin/run_kts
+
 CMD /bin/sh -c 'cd /app/exercises; exec /bin/bash'
