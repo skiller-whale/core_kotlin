@@ -1,4 +1,4 @@
-import java.io.File
+@file:Import("utilities.main.kts")
 
 /* POSITIONAL AND KEYWORD ARGUMENTS
  * --------------------------------
@@ -20,11 +20,6 @@ fun printOccurrences(word: String, ignoreCase: Boolean, text: Array<String>) {
    text.forEach { if (word.equals(it, ignoreCase)) count++ }
    println("In Flatland, '${word}' occurs $count time(s).")
 }
-
-val text = File("${__FILE__.getAbsoluteFile().parent}/../data/flatland.txt")
-
-val flatland: Array<String> = text.readText().split("[.,;!?()'\"\n -]+".toRegex()).toTypedArray()
-print("\n")
 
 /* <<< TODO: EDIT THESE FUNCTION CALLS >>> */
 printOccurrences("triangle", true, flatland)

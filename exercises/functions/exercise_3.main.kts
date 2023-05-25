@@ -1,35 +1,23 @@
-import java.io.File
+@file:Import("utilities.main.kts")
 
 /* DEFAULT PARAMETER VALUES
  * ------------------------
  *
- * 1. Define a function called `compareShapes`, which expects the parameters:
+ * 1. Set default values for some of the parameters in `printOccurrences`.
  *
- *      * `shapes`, which is an array of shape names
- *      * `ignoreCase` which has the default value of `true`
- *      * `text` which has the default value of `flatland`
- *
- * This function should loop through shapes, and call `printOccurrences` for
- * each one, making use of the default values.
- *
- * Use compareShapes to compare the frequency of occurrences of shape names in Flatland.
- * You will need to use the `shapes` array defined below.
+ * 2. Update the function calls below to use the default values.
+ *    Aim to reduce the number of arguments passed to each function call as far as possible.
  */
 
-val shapes: Array<String> = arrayOf("triangle", "triangles", "hexagon", "hexagons", "square", "squares")
-
-/* <<< TODO: WRITE A FUNCTION TO COMPARE SHAPES >>> */
-
-
-/* <<< DO NOT EDIT THIS CODE >>> */
+/* <<< TODO: ADD DEFAULT VALUES TO THIS FUNCTION >>> */
 fun printOccurrences(word: String, ignoreCase: Boolean, text: Array<String>) {
    var count: Int = 0
    text.forEach { if (word.equals(it, ignoreCase)) count++ }
    println("In Flatland, '${word}' occurs $count time(s).")
 }
 
-val text = File("${__FILE__.getAbsoluteFile().parent}/../data/flatland.txt")
-
-val flatland: Array<String> = text.readText().split("[.,;!?()'\"\n -]+".toRegex()).toTypedArray()
-print("\n")
-compareShapes(shapes)
+/* <<< TODO: EDIT THESE FUNCTION CALLS >>> */
+printOccurrences("triangle", true, flatland)
+printOccurrences(ignoreCase = true, word = "hexagon", text = flatland)
+printOccurrences(text = flatland, word = "Triangles", ignoreCase = false)
+printOccurrences("square", text = flatland, ignoreCase = true)

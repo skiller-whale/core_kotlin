@@ -1,3 +1,4 @@
+@file:Import("utilities.main.kts")
 import kotlin.random.Random
 
 /* VARIADIC FUNCTIONS
@@ -21,10 +22,7 @@ import kotlin.random.Random
  * have only one parameter, and you can use `require(array.size != 0)` in the function to ensure
  * that a winning card is only chosen among n >= 1 cards.
  *
- *  HINT 1: extract the logic from the current version of pickWinner into a helper function
- *          that compares two cards and returns a Boolean.
- *
- *  HINT 2: for any array, array.first() returns the first element.
+ *  HINT: you can use `sortCards(array)` to sort the Cards in an array by ascending order.
  */
 
 typealias Card = Pair<Rank,Suit>
@@ -46,8 +44,8 @@ fun pickWinner(card1: Card, card2: Card): Card = when {
 }
 
 /* <<< DO NOT EDIT THIS CODE >>> */
-fun buildDeck(): ArrayList<Card> {
-    var deck: ArrayList<Card> = arrayListOf()
+fun buildDeck(): MutableList<Card> {
+    var deck: MutableList<Card> = mutableListOf()
     for (suit in Suit.values()) {
         for (rank in Rank.values()) {
             deck += Pair(rank, suit)
@@ -56,22 +54,22 @@ fun buildDeck(): ArrayList<Card> {
     return deck
 }
 
-fun drawCard(deck: ArrayList<Card>): Card {
+fun drawCard(deck: MutableList<Card>): Card {
     val random = Random.nextInt(deck.size)
     return deck.removeAt(random)
 }
 
-fun generatePlayers(n: Int, deck: ArrayList<Card>): Array<Card> {
-    require(n <= deck.size) { "There aren't enough cards for $n players"}
-    var cardPlayers: Array<Card> = Array(n) { drawCard(deck) }
-    return cardPlayers
+fun dealCards(n: Int, deck: MutableList<Card>): Array<Card> {
+    require(n <= deck.size)
+    val dealtCards = Array(n) { drawCard(deck) }
+    return dealtCards
 }
 
-fun printGame(cardPlayers: Array<Card>) {
-    cardPlayers.forEachIndexed { index, card -> println("Player ${index + 1} drew $card") }
-    println("${pickWinner(*cardPlayers)} wins!")
+fun printGame(dealtCards: Array<Card>) {
+    dealtCards.forEach { card -> println("$card was drawn") }
+    println("${pickWinner(*dealtCards)} wins!")
 }
 
-var cardDeck = buildDeck()
-val players = generatePlayers(8, cardDeck)
-printGame(players)
+val cardDeck = buildDeck()
+val dealtCards = dealCards(8, cardDeck)
+printGame(dealtCards)
