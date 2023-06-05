@@ -5,15 +5,21 @@
  *
  * Update the definitions of the variables below.
  *
- * In each case, define the value described by the print statement that uses the variable.
+ * In each case, define the value described by the comment above the variable.
+ *
+ * The data for this exercise is stored in the variable `commonWords: List<String>`.
  */
 
+// The ten most common words
 val tenMostCommonWords = ""
 
+// The 120th, 360th, and 600th most common words
 val trioOfCommonWords = ""
 
-val leastCommonAscending = ""
+// The 3 least common words in ascending frequency order
+val leastThreeCommonAscending = ""
 
+// The second, third, and fourth letters of the least common word
 val lettersOfLeastCommon = ""
 
 println("""
@@ -26,7 +32,7 @@ println("""
 
 
     The 3 least common words in ascending frequency order are:
-     ${leastCommonAscending}
+     ${leastThreeCommonAscending}
 
 
     The second, third, and fourth letters of the least common word are:
@@ -35,10 +41,10 @@ println("""
 )
 
 /* <<< DO NOT EDIT THIS CODE >>> */
-assert(tenMostCommonWords == exercise4[0]) {"`tenMostCommonWords` is not implemented correctly"}
-assert(trioOfCommonWords == exercise4[1]) {"`trioOfCommonWords` is not implemented correctly"}
-assert(leastCommonAscending == exercise4[2]) {"`leastCommonAscending` is not implemented correctly"}
-assert(lettersOfLeastCommon == exercise4[3]) {"`lettersOfLeastCommon` is not implemented correctly"}
+assert(tenMostCommonWords == exercise4[0]) {"`tenMostCommonWords` is not implemented correctly\n$hint"}
+assert(trioOfCommonWords == exercise4[1]) {"`trioOfCommonWords` is not implemented correctly\n$hint"}
+assert(leastThreeCommonAscending == exercise4[2]) {"`leastThreeCommonAscending` is not implemented correctly\n$hint"}
+assert(lettersOfLeastCommon == exercise4[3]) {"`lettersOfLeastCommon` is not implemented correctly\n$hint"}
 
 /* SLICING LISTS: PART 2
  * ---------------------

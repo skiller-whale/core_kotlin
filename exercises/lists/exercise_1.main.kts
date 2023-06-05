@@ -3,11 +3,13 @@
 /* INTRODUCTION TO LISTS: PART 1
  * -----------------------------
  *
- * Update `catNames` so that its type signature is more precise, and change its definition so that it is a list containing:
+ * 1. Update `catNames` so that its type signature is more precise.
+ *
+ * 2. Change the definition of `catNames` so that it is a list containing:
  *
  *      "Catpurrnicus", "Shakespaw", "Emily Lickinson", and "Oedipuss"
  *
- * Update the variable `catNamesLength` so that `0` is replaced with the number of names in catNames.
+ * 3. Update the variable `catNamesLength` so that `0` is replaced with the number of names in catNames.
  *
  * Don't just hardcode the number 4.
  */

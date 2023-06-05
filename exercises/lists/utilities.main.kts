@@ -22,6 +22,8 @@ fun String.trimFormat() = this.trimIndent().replace(Regex("(\n*)\n"), "$1")
 
 val lineSeparator = "\n${"*".repeat(86)}\n"
 
+val hint = "HINT: popularity is counted starting from 1, not zero"
+
 // ======================================================================
 // Answers for exercises
 
@@ -37,4 +39,10 @@ val exercise4: List<Any> = listOf(
 )
 
 val numbers: List<Int> = listOf(109, 283, 47, 1209, 8, 471, 90, 241)
-val exercise5: List<List<Int>> = listOf(listOf(109, 283, 47, 1209), listOf(8, 471, 90, 241))
+val exercise5 = listOf(listOf(109, 283, 47, 1209), listOf(8, 471, 90, 241))
+
+val exercise6: List<Any> = listOf(
+    57,
+    listOf("the", "than", "change", "until", "early", "inch", "region", "bit", "lady", "corn", "oxygen", "steam"),
+    listOf("number", "people", "little", "differ", "before", "follow", "change", "animal", "mother", "father"),
+)
