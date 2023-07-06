@@ -55,12 +55,12 @@ printAlbumData(topSales)
  *
  *         HINT: feel free to change any type signatures. You may also want to edit PART 1 of this exercise.
  *
- *      2. Can you spot a design pattern to turn runtime bugs (caused by unintended mutation) into compile-time errors?
+ *      2. Return to the slide instructions and follow the checklist.
  */
 
 /* <<< TODO: Uncomment this code >>> */
 
-// Calculate average sales per month in the quarter for each album
+// // Calculate average sales per month in the quarter for each album
 // fun calculateMonthlyAverages(sales: MutableList<AlbumData>): MutableList<AlbumData> {
 //     sales.forEachIndexed { index, albumData ->
 //         sales[index] = albumData.copy(second = albumData.second / 3) }
@@ -79,12 +79,12 @@ printAlbumData(topSales)
 
 
 // /* <<< DO NOT EDIT THIS CODE >>> */
-// val monthlyAverages = calculateMonthlyAverages(quarterlySalesData)
 // val monthlyAverageTopFive = calculateMonthlyAverages(getTopFive(quarterlySalesData))
+// val monthlyAverages = calculateMonthlyAverages(quarterlySalesData)
 
 // println("\n-- Monthly Averages for Best-sellers:\n")
 // printAlbumData(monthlyAverageTopFive)
 
 // println("\n")
 // assert(monthlyAverageTopFive == exerciseAnswersBestsellers)
-// {"Monthly Averages for Best-sellers is not accurate${averagesAssertionError()}"}
+// {"Monthly Averages for Best-sellers is inaccurate for Units sold${averagesAssertionError()}"}
