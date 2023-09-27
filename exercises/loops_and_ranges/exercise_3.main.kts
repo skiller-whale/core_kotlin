@@ -1,4 +1,4 @@
-import java.io.File
+@file:Import("utilities.main.kts")
 
 /* ITERATING THROUGH INDICES
  * -------------------------
@@ -24,19 +24,5 @@ fun getAnagrams(words: Array<String>, searchWord: String): Array<Pair<Int, Strin
 }
 
 /* <<< DO NOT EDIT THIS CODE >>> */
-val file = File("${__FILE__.getAbsoluteFile().parent}/../data/words_list.txt")
-val bufferedReader = file.bufferedReader()
-val words: Array<String> = (bufferedReader.readLines()).toTypedArray()
-
-fun String.sortWord(): String {
-    val arr = this.toCharArray()
-    return arr.sorted().joinToString("")
-}
-
-fun isAnagram(word1: String, word2: String): Boolean {
-    // Check if word1 is an anagram of word2 (case-sensitive)
-    return word1.sortWord() == word2.sortWord()
-}
-
 println("Anagrams of '${searchWord}'...")
 getAnagrams(words, searchWord).forEach { println("'${it.second}', at position ${it.first}") }

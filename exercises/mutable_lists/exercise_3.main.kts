@@ -29,6 +29,7 @@ fun getTopFive(sales: MutableList<AlbumData>): MutableList<AlbumData> {
     sales.sortByDescending { it.second } // sort albums by number of units sold
 
     // TODO: implement the rest of this function
+    return TODO()
 }
 
 /* <<< DO NOT EDIT THIS CODE >>> */

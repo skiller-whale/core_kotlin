@@ -1,4 +1,4 @@
-import java.io.File
+@file:Import("utilities.main.kts")
 
 /* RANGES AND ITERATION
  * --------------------
@@ -19,8 +19,5 @@ fun buildCleanString(string: String): String {
 }
 
 /* <<< DO NOT EDIT THIS CODE >>> */
-val text = File("${__FILE__.getAbsoluteFile().parent}/../data/bacchae.txt")
-val formattedText = text.readText().split("[.!?]+".toRegex())
 println("DIONYSUS:")
-// Thread each string through `buildCleanString` and println
-formattedText.forEach { string -> println(buildCleanString(string)) }
+formattedBacchae.forEach { string -> println(buildCleanString(string)) }

@@ -20,7 +20,7 @@ fun lightOn(upstairsUp: Boolean, downstairsUp: Boolean): Boolean {
 // Do not edit these print lines
 println("Light switch positions          | Light on")
 println("--------------------------------+---------")
-println("upstairs Up, downstairs Up  \t  | ${lightOn(true, true)}")
-println("upstairs Up, downstairs Down\t  | ${lightOn(true, false)}")
-println("upstairs Down, downstairs Up\t  | ${lightOn(false, true)}")
-println("upstairs Down, downstairs Down\t| ${lightOn(false, false)}")
+println("upstairs Up, downstairs Up      | ${lightOn(true, true)}")
+println("upstairs Up, downstairs Down    | ${lightOn(true, false)}")
+println("upstairs Down, downstairs Up    | ${lightOn(false, true)}")
+println("upstairs Down, downstairs Down  | ${lightOn(false, false)}")

@@ -5,7 +5,7 @@
  *
  * 1. Remove "Tinker, Sailor, Soldier, Spy" from its list and assign it to the variable `favouriteSpyNovel`.
  *
- * 2. Update the function `removeGenre` so that it removes the list from `bookStore` for a given genre.
+ * 2. Update the function `removeGenre` so that it removes every list from `bookStore` that has the specified genre.
  *
  */
 

@@ -12,7 +12,7 @@ enum class Direction {
     NORTH, SOUTH, EAST, WEST
 }
 
-fun reverse(direction: Direction): Direction = /* Your code goes here */
+fun reverse(direction: Direction): Direction = TODO() /* Your code goes here */
 
 
 // Do not edit this code

@@ -1,4 +1,4 @@
-import java.io.File
+@file:Import("utilities.main.kts")
 
 /* ITERATING USING FOR LOOPS
  * -------------------------
@@ -19,6 +19,7 @@ import java.io.File
 fun countOnes(text: List<String>): Int {
 
     // 1. Your code goes here
+    return 0
 
 }
 
@@ -33,11 +34,8 @@ fun findContainers(words: List<String>, substrings: List<String>): Array<String>
 }
 
 /* <<< DO NOT EDIT THIS CODE >>> */
-val text = File("${__FILE__.getAbsoluteFile().parent}/../data/looking_glass.txt")
 println("${text.readText()}")
-val lookingGlass = text.readText().split("[.,!?\\s]+".toRegex())
 println("The answer to the White Queen's sum is: ${countOnes(lookingGlass)}\n")
-print("The substrings are: ")
-substrings.forEach { print ("'${it}' ") }
+print("The substrings are: $substrings")
 print("\nThey are contained in: ")
 findContainers(lookingGlass, substrings).distinct().forEach { print ("'${it}' ")}

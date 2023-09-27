@@ -31,7 +31,7 @@ enum class Rank {
     TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE, TEN, KNAVE, QUEEN, KING, ACE
 }
 
-fun pickWinner(card1: Card, card2: Card): Card = when {/* Your code goes here */}
+fun pickWinner(card1: Card, card2: Card): Card = TODO() /* Your code goes here */
 
 
 // Do not edit this code
