@@ -10,6 +10,7 @@ val int2 = 4324585914
 val int3 = 384400L
 val int4 = 184
 
+// TODO: edit these variables only
 val meaningOfLife: Byte      = int1
 val asciiForAsterisk: Byte   = int1
 val distanceToNeptuneKm: Int = int2

@@ -22,9 +22,9 @@ val GRIDSIZE: Int = BOXSIZE * 3  // A grid is 9x9
   * @param a grid, which is a list of rows of values
   * @return a Boolean (e.g., true if the grid is valid)
   */
-fun valid(g: List<List<Char>>) = rows(g).all { noDuplicates(it) } &&
-                                 cols(g).all { noDuplicates(it) } &&
-                                 boxs(g).all { noDuplicates(it) }
+fun valid(grid: List<List<Char>>) = rows(grid).all { noDuplicates(it) } &&
+                                    cols(grid).all { noDuplicates(it) } &&
+                                    boxs(grid).all { noDuplicates(it) }
 
 /**
   * Check whether a list of values has any duplicates.
@@ -58,9 +58,9 @@ val grid: List<List<Char>> = listOf(
   *
   * @param a grid
   */
-fun printGrid(g: List<List<Char>>) {
-    (g.indices).forEach { i ->
-        (g.indices).forEach { j -> print(g[i][j].toString().plus(" ")) }
+fun printGrid(grid: List<List<Char>>) {
+    (grid.indices).forEach { i ->
+        (grid.indices).forEach { j -> print(grid[i][j].toString().plus(" ")) }
         println()
     }
     println()
@@ -70,15 +70,16 @@ fun printGrid(g: List<List<Char>>) {
 // <<< DO NOT EDIT THIS CODE >> //
 // ====================================================================================
 
-fun transpose(g: List<List<Char>>) = (g[0].indices).map { i -> (g.indices).map { j -> g[j][i] } }
+fun transpose(grid: List<List<Char>>) = (grid[0].indices).map { i -> (grid.indices).map { j -> grid[j][i] } }
 
-fun transform(g: List<List<Char>>) = g.map { it.chunked(BOXSIZE) }.map { cols(it) }.flatten()
+fun transform(grid: List<List<Char>>) = grid.map { it.chunked(BOXSIZE) }.map { cols(it) }.flatten()
 
 fun terraform(xs: List<List<Char>>) = xs.chunked(GRIDSIZE).map { cols(it) }.flatten()
 
-val rows = { g: List<List<Char>> -> g }                       // Get rows from grid
-val cols = { g: List<List<Char>> -> transpose(g) }            // Get columns from grid
-val boxs = { g: List<List<Char>> -> terraform(transform(g)) } // Get boxes from grid
+val rows = { grid: List<List<Char>> -> grid }                       // Get rows from grid
+val cols = { grid: List<List<Char>> -> transpose(grid) }            // Get columns from grid
+val boxs = { grid: List<List<Char>> -> terraform(transform(grid)) } // Get boxes from grid
 
 printGrid(grid)
-println("Sudoku grid is valid: ${valid(grid)}")
+val validGrid = if (valid(grid)) "Sudoku grid is valid" else "Sudoku grid is not valid!"
+println(validGrid)

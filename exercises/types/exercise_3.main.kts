@@ -8,7 +8,8 @@ package org.types
  *
  * Change the units so that the program gives the correct output.
  *   - Only edit golfBallsOnFootballPitch;
- *   - Note that there are 1000m in a meter.
+ *   - You'll need to do some simple arithmetic, but no type changes are needed;
+ *   - Note that there are 1000mm in a meter.
  *
  * What steps are required to avoid overflow?
  */
@@ -18,7 +19,7 @@ val (footballPitchLengthM, footballPitchWidthM) = listOf<UByte>(105U, 68U) // in
 val golfballDiameterMm: UByte = 44U // in millimeters
 
 // TODO: change this line
-val golfballsOnFootballPitch: UInt = (footballPitchLengthM / golfballDiameterMm) * (footballPitchWidthM / golfballDiameterMm)
+val golfballsOnFootballPitch = (footballPitchLengthM / golfballDiameterMm) * (footballPitchWidthM / golfballDiameterMm)
 
 println("You can fit $golfballsOnFootballPitch golf balls on a football pitch")
 assert(golfballsOnFootballPitch == 3686370U) {"`golfballsOnFootballPitch` is not implemented correctly"}
