@@ -39,3 +39,4 @@ println("The answer to the White Queen's sum is: ${countOnes(lookingGlass)}\n")
 print("The substrings are: $substrings")
 print("\nThey are contained in: ")
 findContainers(lookingGlass, substrings).distinct().forEach { print ("'${it}' ")}
+println("")
