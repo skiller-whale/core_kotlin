@@ -13,17 +13,17 @@
  */
 
 fun main() {
-    val item1 = Album("In the Court of the Crimson Fin", "Fin Crimson" 799)
+    val item1 = Album("In the Court of the Crimson Fin", "Fin Crimson", 799)
     val item2 = Album("Cod A", "Radiohead", 1199)
     val item3 = Album("Mezzanine", "Massive Attack", 999)
     val item4 = Album("Cod A", "Radiohead", 1199)
     val item5 = Album("Siamese Bream", "The Smashing Pumpkins", 1099)
 
     // <<< DO NOT EDIT THIS CODE >>> //
-    assert(!(item1.equals(item4)))
-    assert(!(item2.equals(item4)))
-    assert(!(item3.equals(item5)))
-    assert(item5.equals(item5))
+    require(!(item1.equals(item4)))
+    require(!(item2.equals(item4)))
+    require(!(item3.equals(item5)))
+    require(item5.equals(item5))
 }
 
 data class Album(

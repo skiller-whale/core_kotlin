@@ -2,7 +2,7 @@
  * ----------------------------
  *
  * 1. Define a new `basket` property and initialise it to an empty set using `mutableSetOf()`.
- * 2. Define a member function `fullName` that returns a customer's first name and surname in a String.
+ * 2. Define a member function `fullName` that returns a customer's first name and last name in a String.
  * 3. Define two member functions `addToBasket`:
  *    a. One should take a collection of Strings and add them all to a customer's basket;
  *    b. One should take a String and add it to a customer's basket.
@@ -33,10 +33,10 @@ fun main() {
 
 class Customer(
     val firstName: String = "Placeholder",
-    val surname: String = "Placeholder",
+    val lastName: String = "Placeholder",
 ) {
     init {
-        if (firstName.isBlank() || surname.isBlank()) {
+        if (firstName.isBlank() || lastName.isBlank()) {
             throw Exception("Please provide a non-empty name")
         }
     }

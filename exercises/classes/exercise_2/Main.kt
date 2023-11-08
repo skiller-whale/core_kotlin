@@ -3,7 +3,7 @@
  *
  * Currently, each customer is represented as a pair of Strings.
  *
- * 1. Re-factor this code to use a Customer class with properties for a first name and last name.
+ * 1. Re-factor this code to define the `firstName` and `lastName` properties using a primary constructor.
  * 2. Use an init block to validate each property so that empty names are not allowed.
  *    Hint: `str.isBlank()` will return `true` if `str` is empty or contains only whitespace.
  * 3. Assign instances of Customer to the variables.
@@ -22,5 +22,9 @@ fun main() {
     println("customer3 is called ${customer3.first} ${customer3.second}")
 }
 
-// TODO: add properties to this class and some initialisation logic
-class Customer
+// TODO: initialise or define the properties using a primary constructor
+// TODO: add some initialisation logic
+class Customer {
+    val firstName: String = "Plaiceholder"
+    val lastName: String = "Plaiceholder"
+}

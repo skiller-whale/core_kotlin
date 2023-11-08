@@ -24,7 +24,7 @@ fun main() {
     // println("customer4: ${customer4.firstName} ${customer4.lastName}, email: ${customer4.email}")
 
     // <<< DO NOT EDIT THIS CODE >>> //
-    checkAnswersCorrect(customer1, customer3) // Run asserts
+    checkAnswersCorrect(customer1, customer3) // Run requirements
 }
 
 class Customer(
@@ -41,10 +41,10 @@ class Customer(
 
 // <<< DO NOT EDIT THIS CODE >>> //
 fun checkAnswersCorrect(customer1: Customer, customer3: Customer) {
-    assert(customer3.firstName == "Plaiceholder")
+    require(customer3.firstName == "Plaiceholder")
     {"No default value provided for `firstName`."}
-    assert(customer3.lastName == "Plaiceholder")
+    require(customer3.lastName == "Plaiceholder")
     {"No default value provided for `lastName`."}
-    assert(customer1.email == "tuna.turner@orca.com")
+    require(customer1.email == "tuna.turner@orca.com")
     {"Email for Tuna Turner is not lowercase. Check your initialisation logic."}
 }
