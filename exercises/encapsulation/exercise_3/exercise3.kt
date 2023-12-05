@@ -1,30 +1,34 @@
-/* Exercise 3: Encapsulation and Setters
- * -------------------------------------
+/* Exercise 4 : The Companion Object
+ * ---------------------------------
  *
- * PART 1: if you look in `Main.kt`, you will see that the user has access
- * to `allGuesses` in the `printState()` function. So, they could accidentally
- * mutate this data, since `allGuesses` is a mutable list.
+ * This class uses `randomWord()` from the `Utility` class to generate a word
+ * for each game. However, it does not keep track of which words have been used.
+ * So a player might have to guess the same word if they play consecutive games.
  *
- *  Fix this by ensuring that the user can only access an immutable list.
- *  Do not change the type or implementation of `allGuesses`, although you
- *  may change its visibility.
+ *   PART 1: Update the game so that it will not repeat a word after it has been used.
+ *   Hint: you might want to use an `init` block, or define a new function in the
+ *   companion object.
  *
- * PART 2: Update this code so that the `difficulty` property has a setter.
- * This should accept values between 1 and 18 (inclusive) but throw an error
- * when given values outside of this range.
+ *   PART 2 (Extra): 'reset' the used words after all options have been played.
  *
- * You should also update `Main.kt` so that players have the ability to
- * set the difficulty of a game before they start. Consider how users should
- * set this property as part of the API design.
+ * Hint: you can use `Utility().wordsLength` to get the length of the list used
+ * to draw random words for the game. The method `clear()` will also remove
+ * every element in a mutable list or set.
  */
 
 class Hangman() {
-    private val answer: String   = Utility().randomWord()
-    public val allGuesses        = mutableListOf<Char>()
+    private var answer           = Utility().randomWord()
+    private val guesses          = mutableListOf<Char>()
     private val incorrectGuesses = mutableListOf<Char>()
+    private var difficulty       = 10
+      private set(value) = when {
+        (value <= 0)  -> throw Exception("Please provide a positive value")
+        (value <= 18) -> field = value
+        else          -> throw Exception("The game is too easy!")
+      }
 
-    // TODO: implement a setter for this property with input validation
-    private val difficulty       = 10
+    // TODO: define a companion object to track the used words
+    // You might also want an `init` block for parts 1 and 2
 
     public val isWon get()  = currentAnswer == answer
     public val isLost get() = remainingGuesses == 0
@@ -33,20 +37,28 @@ class Hangman() {
     public val remainingGuesses: Int
       get() = difficulty - incorrectGuesses.size
 
+    // Get letters guessed (behind immutable interface).
+    public val lettersGuessed: List<Char>
+      get() = guesses
+
     // Get state of current answer.
     public val currentAnswer: String
       get() = answer.toCharArray().map { letter ->
-        if (allGuesses.contains(letter)) letter else '*' }.joinToString("")
+        if (guesses.contains(letter)) letter else '*' }.joinToString("")
 
-    public fun guessLetter(letter: Char) {
-        allGuesses.add(letter)
+    public fun selectDifficulty(numberOfGuesses: Int) {
+        difficulty = numberOfGuesses
+    }
+
+    private fun guessLetter(letter: Char) {
+        guesses.add(letter)
         if (!answer.contains(letter)) {
             incorrectGuesses.add(letter)
         }
     }
 
     public fun playGuess(guess: Char): String {
-      return when (!(allGuesses).contains(guess)) {
+      return when (!(lettersGuessed).contains(guess)) {
         true -> { guessLetter(guess); "You guessed ${guess}" }
         false -> "You have already guessed that!"
       }

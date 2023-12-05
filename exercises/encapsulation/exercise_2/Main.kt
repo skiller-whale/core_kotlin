@@ -2,21 +2,26 @@
 /* -- Client code to run a game using its API -- */
 
 fun main() {
-    PlayGame().runGame()
+    val newGame = Game()
+    newGame.setDifficulty()
+    newGame.runGame()
 }
 
-class PlayGame() {
-    private val game = Hangman()
+class Game() {
+    val game = Hangman()
 
-    private val remainingGuesses: Int
-      get() = game.difficulty - game.incorrectGuesses.size
+    fun setDifficulty() {
+        print("Please enter a number between 1 and 18 to set the difficulty: ")
+        val guesses: Int = java.util.Scanner(System.`in`).nextInt()
+        // TODO: set the game difficulty here using the `guesses` input
+    }
 
     tailrec fun runGame() {
         printState()
         when {
-            remainingGuesses == 0 -> println("Sorry! You have lost")
-            game.isWon            -> println("Congratulations, you won!")
-            else                  -> { // Run game in loop
+            game.isLost -> println("Sorry! You have lost")
+            game.isWon  -> println("Congratulations, you won!")
+            else        -> { // Run game in loop
                 print("Enter a letter or word: ")
                 val input: Char = readln().single()
                 game.playGuess(input).also(::println)
@@ -28,7 +33,7 @@ class PlayGame() {
     fun printState() {
         println()
         println("Current answer: ${game.currentAnswer}")
-        println("Letters guessed: ${game.lettersGuessed}")
-        println("You have ${remainingGuesses} remaining guesses.")
+        println("Letters guessed: ${game.allGuesses}")
+        println("You have ${game.remainingGuesses} remaining guesses.")
     }
 }

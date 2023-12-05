@@ -13,14 +13,14 @@ class Game() {
     fun setDifficulty() {
         print("Please enter a number between 1 and 18 to set the difficulty: ")
         val guesses: Int = java.util.Scanner(System.`in`).nextInt()
-        // TODO: set the game difficulty here using the `guesses` input
+        game.selectDifficulty(guesses)
     }
 
     tailrec fun runGame() {
         printState()
         when {
-            game.isLost -> println("Sorry! You have lost")
-            game.isWon  -> println("Congratulations, you won!")
+            game.isLost -> { println("Sorry! You have lost"); continueGame() }
+            game.isWon  -> { println("Congratulations, you won!"); continueGame() }
             else        -> { // Run game in loop
                 print("Enter a letter or word: ")
                 val input: Char = readln().single()
@@ -30,10 +30,20 @@ class Game() {
         }
     }
 
+    fun continueGame() {
+        print("Would you like to play again? (y/n) ")
+        val input: Char = readln().single()
+        when {
+            input == 'y' -> main()
+            input == 'n' -> println("Bye!")
+            else         -> continueGame()
+        }
+    }
+
     fun printState() {
         println()
         println("Current answer: ${game.currentAnswer}")
-        println("Letters guessed: ${game.allGuesses}")
+        println("Letters guessed: ${game.lettersGuessed}")
         println("You have ${game.remainingGuesses} remaining guesses.")
     }
 }
