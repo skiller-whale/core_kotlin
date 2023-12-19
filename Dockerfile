@@ -15,4 +15,10 @@ RUN kotlin -e 'println("Hello from Kotlin")'
 RUN printf '#!/bin/sh\nexec kotlinc -J-ea -script "$@"' > /usr/local/bin/run_kts && \
     chmod +x /usr/local/bin/run_kts
 
+RUN printf '#!/bin/sh\nexec kotlinc *.kt -include-runtime -d /app/build/Main.jar' > /usr/local/bin/build && \
+    chmod +x /usr/local/bin/build
+
+RUN printf '#!/bin/sh\nexec kotlin /app/build/Main.jar' > /usr/local/bin/run_kt && \
+    chmod +x /usr/local/bin/run_kt
+
 CMD /bin/sh -c 'cd /app/exercises; exec /bin/bash'
