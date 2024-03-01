@@ -1,6 +1,5 @@
 import data.csvparser.*
 import data.table.*
-import data.album.*
 
 import java.io.File
 
@@ -10,14 +9,18 @@ fun main() {
     val albumTable: Table = readTable(albumData)
 
     // Do some transformations on the Columns
-    // TODO (Optional): use a single variable and chain the transformations
-    val trimmedTable   = transformTable(albumTable, ::removeWhitespace)
-    val formattedTable = partialTransformTable(trimmedTable, listOf(1), ::toUpperCase)
+    val trimmedTable = transformTable(albumTable, ::removeWhitespace)
+    val upperTitles  = partialTransformTable(trimmedTable, listOf(1), ::toUpperCase)
 
-    // Get the list of Rows before parsing into instances of the data class
-    val rowTable = getRows(formattedTable)
+    // Get the list of Rows before pretty printing the table
+    getRows(upperTitles).also(::pprintTable)
+}
 
-    // TODO: use the `parseTable()` function to get a List<Album>
-    val albums = TODO("Not implemented")
-    albums.forEach { println(it) }
+public fun <T> pprintTable(table: List<List<T>>) {
+    table.map(::pprintRow)
+}
+
+private fun <T> pprintRow(row: List<T>) {
+   row.map { value -> print("${value}, ")}
+   println("")
 }

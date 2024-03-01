@@ -1,34 +1,17 @@
 /* Exercise 1: Higher-Order Functions
  * ----------------------------------
  *
- * PART 1: define the `andThen` function.
- *
- * PART 2: define the `memoizeFun` function.
- *
- * HINT: use a Map<K, V>.
+ * Define the `andThen()` function.
  */
 
-// TODO: define the `andThen` function
+// TODO: define the `andThen()` function
 
-// TODO: define the `memoizeFun` function
+fun square(x: Int): Int = x*x
 
-fun slowSquare(x: Int): Int {
-    print("Computing square of $x")
-    (0..6).forEach { print("."); Thread.sleep(200) }
-    println("complete")
-    return x*x
-}
-
-fun slowIsEven(x: Int): Boolean {
-    print("Computing whether $x is even")
-    (0..6).forEach { print("."); Thread.sleep(200) }
-    println("complete")
-    return x % 2 == 0
-}
+fun isEven(x: Int): Boolean = x % 2 == 0
 
 fun main() {
-    val squareEven = andThen(::slowSquare, ::slowIsEven)
-    val memoize    = memoizeFun(squareEven)
-    memoize(83).also(::println)
-    memoize(83).also(::println)
+    val squareEven = andThen(::square, ::isEven)
+    squareEven(28736).also(::println)
+    squareEven(8).also(::println)
 }

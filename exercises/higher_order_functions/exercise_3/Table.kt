@@ -1,42 +1,39 @@
 package data.table
 
-import data.album.*
 import data.csvparser.*
 
 import java.io.File
+import java.io.File.*
 
-/* Exercise 3: Higher-Order Idioms
- * -------------------------------
+/* Exercise 3: Lambda Functions
+ * ----------------------------
  *
- * You have been provided with a partially implemented package for
- * doing some operations on plain CSV tables, as before.
+ * This code defines a DSL for doing some basic operations on plain
+ * CSV data, like applying transformation functions to columns.
  *
- * PART 1: define the `parseTable()` function, using the converter
- * `Album.Converter::from` in the `Album` class. Update `Main`.
+ * PART 1: define `transformTable()`, a higher-order function.
  *
- * PART 2 (OPTIONAL): re-define `transformTable()` and `partialTransformTable()`.
- * Update the function calls in `Main` to use a 'chain' style.
+ * PART 2: define the `partialTransformTable()` function.
  */
 
-// TODO: define the `parseTable()` function
+// TODO: define the higher-order `transformTable()` function
 
-// TODO: Update this function so it can be called with a receiver
-public fun transformTable(table: Table, transform: (Value) -> Value): Table {
-    return table.map { column -> transformColumn(column, transform) }
-}
+// TODO: define the higher-order `partialTransformTable()` function
 
-// TODO: Update this function so it can be called with a receiver
-public fun partialTransformTable(table: Table, columns: List<Int>, transform: (Value) -> Value): Table {
-    return table.mapIndexed {
-        index, column -> if (columns.contains(index)) transformColumn(column, transform) else column }
-}
+// TODO: define the higher-order `transformColumn()` function
 
-private fun transformColumn(column: Column, transform: (Value) -> Value): Column {
-    return column.map(transform)
-}
+// Some functions for Value transformations
+
+public fun removeWhitespace(value: Value): Value = value.trim()
+
+public fun regexReplace(value: Value, old: Char, new: Char): Value = value.replace(old, new)
+
+public fun toLowerCase(value: Value): Value = value.lowercase()
+
+public fun toUpperCase(value: Value): Value = value.uppercase()
 
 //----------------------------------------------------------------------
-// -- Outline
+// -- Outline of the code
 
 // A CSV table is initially parsed as a list of columns
 typealias Table = List<Column>
@@ -62,13 +59,3 @@ public fun getColumns(rows: List<Row>): Table = transpose(rows)
 private fun <T> transpose(matrix: List<List<T>>): List<List<T>> {
     return (matrix[0].indices).map { i -> (matrix.indices).map { j -> matrix[j][i] } }
 }
-
-// Some functions for Value transformations
-
-public fun removeWhitespace(value: Value): Value = value.trim()
-
-public fun regexReplace(value: Value, old: Char, new: Char): Value = value.replace(old, new)
-
-public fun toLowerCase(value: Value): Value = value.lowercase()
-
-public fun toUpperCase(value: Value): Value = value.uppercase()
