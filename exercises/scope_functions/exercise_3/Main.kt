@@ -22,20 +22,14 @@ fun main() {
 
 tailrec fun lookLogs() {
     println("\nEnter a city to view its weather forecast.")
-    println("You can enter multiple cities on new lines, then search using:")
-    println("  - 'Ctrl+D' (macOs and Linux)")
-    println("  - 'Ctrl+X' then 'Return' (Windows)")
     print(">> ")
-    generateSequence(::readLine)
-      .let { seq -> seq.toList() }
-      .map { str -> readInput(str) }
+
+    // TODO: update this code to use `readlnOrNull()` then
+    // build a call chain with `let` that also handles the nullability
+    val input = readln().run { this.replace("\\s".toRegex(), "") } // Remove whitespace
+    searchLog("weather-${input}.log") // Search for weather
     lookLogs()
 }
-
-// TODO: define the `readInput()` function and use `let` to
-// handle the nullability of the input String for `searchLog`
-fun readInput(input: String?) = TODO("Not implemented")
-
 
 // Search logs for some weather data
 fun searchLog(logFileName: String) {

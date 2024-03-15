@@ -24,7 +24,7 @@ fun main() {
 tailrec fun lookLogs() {
     println("\nEnter a city to view its weather forecast.")
     print(">> ")
-    readLine().let { searchLog("weather-${it}.log") }
+    readln().run { searchLog("weather-${this}.log") }
     lookLogs()
 }
 

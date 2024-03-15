@@ -4,10 +4,12 @@ import weatherrequest.*
 
 class City(val name: String = "") {
 
-    private val randomDate = WeatherRequest().createRandomDate(2024, 2072)
+    private val weatherRequest = WeatherRequest()
 
-    // TODO: simplify this definition, and remove the separate definition for `randomDate`, using `run`
-    val date = if (WeatherRequest().isValid(randomDate)) randomDate else error("Date not valid")
+    val temperature = weatherRequest.getTemperature(name)
 
-    val temperature = WeatherRequest().getTemperature(name)
+    // TODO: use `run` to simplify the definition of `date`, and define `date` without
+    // introducing the new `randomDate` variable
+    private val randomDate = weatherRequest.createRandomDate(2024, 2072)
+    val date = if (weatherRequest.isValid(randomDate)) randomDate else error("Date not valid")
 }

@@ -2,17 +2,21 @@ import passwordgenerator.*
 import hasher.*
 
 fun main() {
-    val plainGenerator = PasswordGenerator()
-    val plainPassword = plainGenerator.generate()
+    // Create generators
+    val plainGenerator  = PasswordGenerator()
+    val hashGenerator   = PasswordGenerator()
+    val customGenerator = PasswordGenerator()
 
-    plainGenerator.hasher = Hash()
+    // Configure generators
+    hashGenerator.hasher = Hash()
+    customGenerator.hasher = Hash()
+    customGenerator.passwordLength = 40
+    customGenerator.acceptedChars = "SKILLERWHALE_-!@*$"
 
-    val hashedPassword = plainGenerator.generate()
-
-    plainGenerator.passwordLength  = 40
-    plainGenerator.acceptedChars   = "SKILLERWHALE_-!@*$"
-
-    val customPassword = plainGenerator.generate()
+    // Create passwords
+    val plainPassword  = plainGenerator.generate()
+    val hashedPassword = hashGenerator.generate()
+    val customPassword = customGenerator.generate()
 
 	println("Plain password:  $plainPassword")
     println("Hashed password: $hashedPassword")
