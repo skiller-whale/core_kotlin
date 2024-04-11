@@ -22,7 +22,8 @@ class Pack(
     private val cards: MutableList<?> = build()
 }
 
-// TODO: add these functions to the class
+// TODO: add these functions to the class and update them
+// to work as member functions
 fun <T> shuffle(pack: MutableList<T>): MutableList<T> {
     return pack.apply { shuffle() }
 }

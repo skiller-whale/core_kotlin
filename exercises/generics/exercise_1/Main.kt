@@ -23,7 +23,7 @@ fun main() {
 }
 
 // TODO: update this function to make it generic
-fun shuffle(pack: MutableList<PlayingCard>): MutableList<PLayingCard> {
+fun shuffle(pack: MutableList<PlayingCard>): MutableList<PlayingCard> {
     return pack.apply { shuffle() }
 }
 

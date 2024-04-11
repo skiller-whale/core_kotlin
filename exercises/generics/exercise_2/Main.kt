@@ -7,12 +7,10 @@ fun main() {
     val germanPack = Pack<GermanCard>(::buildGermanPack)
 
     println("After shuffling, the top four French cards are:")
-    frenchPack
-      .apply { shuffle() }
-      .also  { it.printCards(4) }
+    frenchPack.shuffle()
+    frenchPack.printCards(4)
 
     println("\nAfter shuffling, the top four German cards are:")
-    germanPack
-      .apply { shuffle() }
-      .also  { it.printCards(4) }
+    germanPack.shuffle()
+    germanPack.printCards(4)
 }
