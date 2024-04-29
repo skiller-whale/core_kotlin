@@ -5,18 +5,20 @@ import data.interfaces.*
 /* Exercise 2: Generic Type Constraints: Multiple Upper Bounds
  * -----------------------------------------------------------
  *
- * Use multiple type constraints on the parameter for the
- * `CsvConverter<T>` rather than one constraint in a combined interface.
+ * Define a `CsvConverter<T>` class that contains both functions.
+ *
+ * Use type constraints to ensure that every function provided by this
+ * class only works with values that are encodable and decodable.
  */
 
-class CsvConverter<T: Serializable<T>> {
-    // Convert an input to a CSV table
-    fun toCsv(input: List<T>): List<String> {
-        return input.map { it -> it.encode() }
-    }
+// TODO: define the `CsvConverter<T>` class and add type constraints
 
-    // Convert a CSV table to a list of data class instances
-    fun fromCsv(csv: List<String>, decoder: Decodable<T>): List<T> {
-        return csv.map { it -> decoder.decode(it) }
-    }
+// Convert an input to a CSV table
+fun <T> toCsv(input: List<T>): List<String> {
+    return input.map { it -> it.encode() }
+}
+
+// Convert a CSV table to a list of data class instances
+fun <T> fromCsv(csv: List<String>, decoder: Decodable<T>): List<T> {
+    return csv.map { it -> decoder.decode(it) }
 }
