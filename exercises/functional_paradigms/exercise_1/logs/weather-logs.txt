@@ -1,0 +1,8 @@
+Predicted temperature for Berlin at 2067-12-26: 8°C
+Predicted temperature for Boston at 2031-11-19: 10°C
+Predicted temperature for Kyoto at 2024-02-10:  20°C
+Predicted temperature for London at 2024-05-13: 32°C
+Predicted temperature for Madrid at 2059-09-15: 34°C
+Predicted temperature for Prague at 2033-04-21: 7°C
+Predicted temperature for Seoul at 2026-07-19:  22°C
+Predicted temperature for Tokyo at 2030-01-18:  18°C
