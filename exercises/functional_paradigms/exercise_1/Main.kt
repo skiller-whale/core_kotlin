@@ -3,7 +3,7 @@ import data.utility.*
 
 import kotlin.math.round
 
-/* Exercise 3: Zip and Unzip
+/* Exercise 1: Zip and Unzip
  * -------------------------
  *
  * Use `zip()` to build a new column using the existing columns

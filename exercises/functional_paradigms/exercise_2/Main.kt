@@ -1,7 +1,7 @@
 import data.csvparser.*
 import data.employee.*
 
-/* Exercise 4: Map and FlatMap
+/* Exercise 2: Map and FlatMap
  * ---------------------------
  *
  * Suppose you have a list of `Employee`s (deserialised from some CSV).

@@ -1,7 +1,7 @@
 import data.csvparser.*
 import data.employee.*
 
-/* Exercise 5: Fold
+/* Exercise 3: Fold
  * ----------------
  *
  * 1. Define the `countSales()` function using a fold.
@@ -9,7 +9,7 @@ import data.employee.*
  * count how many elements in the list are greater than the value.
  *
  * 2. EXTRA: implement the `getQuarterlyIncrements()` function using a fold.
- * This should take an `Employee` and return a list that adds each
+ * This should take an `Employee` and return a List<Double> that adds each
  * adjacent element in the employee's `List<Sales>` from left to right:
  *
  *      [1.0, 2.0, 3.0, 4.0] ==> [1.0, 3.0, 6.0, 10.0]
@@ -40,12 +40,3 @@ fun main() {
 // TODO: define the `countSales()` function using `fold()`
 
 // TODO: define the `getQuarterlyIncrements()` function using `fold()`
-fun getQuarterlyIncrements(employee: Employee): List<Double> {
-    val (_, values) = employee.sales.unzip()
-    return values.fold(listOf(0.0), ::getAndIncrement)
-}
-
-fun getAndIncrement(list: List<Double>, num: Double): List<Double> {
-    val newValue = list[list.lastIndex] + num
-    return list + newValue
-}
