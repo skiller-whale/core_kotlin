@@ -1,49 +1,32 @@
-import java.io.File
-import java.io.File.*
-import java.nio.file.*
-import java.nio.file.Paths
+import data.csvparser.*
+import data.utility.*
 
-/* Exercise 1: Recursion
- * ---------------------
+import kotlin.math.round
+
+/* Exercise 3: Zip and Unzip
+ * -------------------------
  *
- * Write a recursive function `getLogs()` to traverse a directory
- * structure printing the name of any log files
+ * Use `zip()` to build a new column using the existing columns
+ * in the variables `q1`, `q2`, `q3`, `q4`, and `rates`.
  *
- * Extra: update `getLogs()` so that each recursive function call also
- * builds a `String` of the path taken through the sub-directories. This
- * path should be printed with any log file like "<path>/logs.txt"
+ * The commission for an employee is calculated by adding their
+ * quarterly sales and then multiplying the total by their commission rate.
  */
 
 fun main() {
-    // Get absolute path for current directory
-    val path = Paths.get("").toAbsolutePath()
+    val parser   = CsvParser()
+    val csvTable = parser.parseToTable("employee-sales.csv")
+    val columns  = parser.getColumns(csvTable)
 
-    // TODO: update this function call to `getLogs()`
-    getLogsLoop(path.toFile())
-}
+    // Get quarterly sales data and commission rates
+    // as values of type `Double` from the CSV table
+    val (q1, q2, q3, q4, rates) = columns.getSalesData()
 
-// TODO: define the recursive function `getLogs()`, which should
-// be a non-imperative version of `getLogsLoop()`
+    // TODO: use `zip()` to define a `commissions` variable.
+    // This should be like a 'Commission' column in the table
 
-fun getLogsLoop(input: File) {
-    val stack = mutableListOf<File>()
-    stack.add(input)
-
-    // While the stack is not empty, pop the top element
-    // If the item is a directory, push the sub-directories onto the stack
-    // If the item is a file, print whether it contains logs or not
-    while (stack.isNotEmpty()) {
-        val item = stack.removeAt(0)
-        when {
-            (item.isDirectory()) -> {
-                item.listFiles().forEach { stack.add(it) }
-            }
-            (item.isLog()) -> println("Logs: '${item.getName()}'")
-            else -> println("No logs in '${item.getName()}'")
-        }
-    }
-}
-
-fun File.isLog(): Boolean {
-    return this.getName().contains("logs", ignoreCase = true)
+    println("Employee Commission Earnings:")
+    println("-----------------------------")
+    val employeeCommissions = columns[0].zip(commissions)
+    employeeCommissions.forEach { println("${it.first}: £${round(it.second)}") }
 }
