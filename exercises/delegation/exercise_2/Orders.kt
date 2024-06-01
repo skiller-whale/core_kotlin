@@ -1,23 +1,25 @@
 package table.orders
 
-import table.forwarding.*
-
 import java.io.File
 import java.nio.file.Paths
 import java.time.LocalDate
 import java.util.Hashtable
 
-/* Exercise 3: Delegation using the `by` Keyword
- * ---------------------------------------------
+/* Exercise 2: Delegation
+ * ----------------------
  *
- * Update the forwarding table to use automatic delegation.
- * This should reduce the boilerplate in your code.
+ * Instead of inheriting from Hashtable, Order should accept a MutableMap as a
+ * constructor parameter, with a default value of `Hashtable()`.
  *
- * Hint: you may also need to update the constructor for
- * the `Orders` class.
+ * The Orders class should then delegate its operations to the MutableMap
+ * instance, rather than overriding inherited methods.
+ *
+ *
+ *  Note: Don't worry about delegating any map operations other than `put` and
+ *        `putAll`. This will be covered in a later exercise.
  */
 
-class Orders : ForwardingTable<String, Int>() {
+class Orders : Hashtable<String, Int>() {
     private val path    = Paths.get("").toAbsolutePath().toString()
     private val logPath = File("${path}/logs/orders.log")
 
@@ -33,7 +35,7 @@ class Orders : ForwardingTable<String, Int>() {
 
     private fun logOrder(path: File, order: Pair<String, Int>) {
         path.appendText("\nOrder: ${order.first}".padEnd(20))
-        path.appendText("-- Quantity: ${order.second}".padEnd(10))
+        path.appendText("-- Quantity: ${order.second}".padEnd(20))
         path.appendText("-- ${LocalDate.now()}".padEnd(8))
     }
 
