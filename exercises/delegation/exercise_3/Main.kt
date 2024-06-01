@@ -16,4 +16,7 @@ fun main() {
         "Hoover" to 1,
         "Leafblower" to 1,
         "Cement" to 2))
+
+    println("\nOrders table size: ${ordersTable.size}\n")
+    ordersTable.forEach { (item, quantity) -> println("*  Item: $item, Quantity: $quantity") }
 }
