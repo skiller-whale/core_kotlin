@@ -63,7 +63,7 @@ class Savings (
 ) : Account(accountNumber, sortCode, balancePence) {
 
     fun getInterest(): Double {
-        return java.lang.Math.ceil((balancePence * interestRate) - balancePence)
+        return kotlin.math.ceil((balancePence * interestRate) - balancePence)
     }
 
     // Savings account can transfer only to accounts with the same sort code
