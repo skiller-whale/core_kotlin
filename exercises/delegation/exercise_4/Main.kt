@@ -1,54 +1,50 @@
-// <<< DO NOT EDIT THIS CODE >> //
-import card.creditcard.*
-import card.account.*
-import card.carddata.*
-import card.validator.*
+// <<< YOU DO NOT NEED TO READ OR EDIT THE CODE IN THIS FILE >> //
+package account
 
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.time.LocalDate
+class CurrentAccount(private var balancePence: Long) : Account {
+    override fun deposit(amountPence: Long) { balancePence += amountPence }
+
+    override fun withdraw(amountPence: Long): Boolean {
+        if (amountPence <= balancePence) {
+            balancePence -= amountPence
+            return true
+        }
+        return false
+    }
+
+    override fun transferTo(to: Depositable, amountPence: Long) {
+        if (withdraw(amountPence)) { to.deposit(amountPence) }
+    }
+
+    override fun transferFrom(from: Withdrawable, amountPence: Long) {
+        if (from.withdraw(amountPence)) { deposit(amountPence) }
+    }
+
+    override fun showBalance(): String = "%,d".format(balancePence / 100)
+}
+
+data class DebitCardData(
+    override val cardHolderName: String,
+    override val cardNumber: String,
+    override val cvvNumber: String
+) : CardData
 
 fun main() {
-    val clamexValidator = CardValidator(expectedCvvLength = 4)
-    val visaValidator   = CardValidator()
-    val account1        = Account(10000000)
-    val account2        = Account(9000000)
-    val formatter       = DateTimeFormatter.BASIC_ISO_DATE
+    val account1 = CurrentAccount(10000000)
+    val account2 = CurrentAccount(9000000)
 
-    val cardData1 = CardData(
-        "Sealion Dion",
-        "1290837401298347",
-        "431",
-        LocalDate.parse("30200911", formatter),
-    )
+    val cardData1 = DebitCardData("Sealion Dion", "1290837401298347", "431")
+    val cardData2 = DebitCardData("Tuna Turner", "0123456789101112", "9922")
 
-    val cardData2 = CardData(
-        "Tuna Turner",
-        "0123456789101112",
-        "9922",
-        LocalDate.parse("30220301", formatter),
-    )
+    val sealion: Card = DebitCard(cardData1, account1)
+    val tuna:    Card = DebitCard(cardData2, account2)
 
-    val sealion = CreditCard(
-        cardData  = cardData1,
-        account   = account1,
-        // TODO: uncomment if you have defined the validator
-        // validator = visaValidator
-    )
-
-    val tuna = CreditCard(
-        cardData  = cardData2,
-        account   = account2,
-        // TODO: uncomment if you have defined the validator
-        // validator = clamexValidator
-    )
-
-    println("OrcaBank: Giving Your Money Porpoise")
+    println("\nOrcaBank: Giving Your Money Porpoise")
     println("------------------------------------")
-    println("${sealion.getCardHolderName()} -- Balance: £${sealion.showBalance()}")
-    println("${tuna.getCardHolderName()}  -- Balance: £${tuna.showBalance()}")
-    println("\nTransferring £100 from ${sealion.getCardHolderName()} to ${tuna.getCardHolderName()}")
-    sealion.transfer(tuna.getAccount(), 10000L)
-    println("${sealion.getCardHolderName()} -- Balance: £${sealion.showBalance()}")
-    println("${tuna.getCardHolderName()}  -- Balance: £${tuna.showBalance()}")
+    println("${sealion.cardHolderName} -- Balance: £${sealion.showBalance()}")
+    println("${tuna.cardHolderName}  -- Balance: £${tuna.showBalance()}")
+    println("\nTransferring £100 from ${sealion.cardHolderName} to ${tuna.cardHolderName}")
+    sealion.transferTo(tuna.getAccount(), 10000)
+    println("\n${sealion.cardHolderName} -- Balance: £${sealion.showBalance()}")
+    println("${tuna.cardHolderName}  -- Balance: £${tuna.showBalance()}")
 }

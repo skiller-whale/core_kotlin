@@ -1,30 +1,45 @@
-package card.creditcard
+package account
 
-import card.account.*
-import card.carddata.*
-import card.validator.*
+// <<< DO NOT EDIT ANY OF THESE INTERFACES >>> //
 
-import java.time.LocalDate
+interface Withdrawable {
+    fun withdraw(amountPence: Long): Boolean
+    fun transferTo(to: Depositable, amountPence: Long)
+    fun showBalance(): String
+}
+
+interface Depositable {
+    fun deposit(amountPence: Long)
+    fun transferFrom(from: Withdrawable, amountPence: Long)
+}
+
+interface Account : Withdrawable, Depositable
+
+interface CardData {
+    val cardHolderName: String
+    val cardNumber: String
+    val cvvNumber: String
+}
+
+interface Card : Withdrawable, CardData {
+    fun getAccount(): Account
+}
 
 /* Exercise 4: Multiple Delegation
  * -------------------------------
  *
- * 1. Define the `CreditCard` class.
- * This should implement the `Card` interface and do so using only delegation.
+ * For convenience, all of the interfaces you need to know about are written in
+ * this file, and you do not need to read the code in Main.kt.
+ * DO NOT EDIT ANY OF THE INTERFACES ABOVE.
  *
- * 2. Extra: delegate to the `CardValidator` to provide a validation function
- * that is run whenever a `CreditCard` is initialised.
+ * 1. Complete the implementation of the DebitCard class below, writing as
+ *    little additional code as possible. Do not change its constructor.
+ *
+ * 2. Run the `main` function in Main.kt to test your implementation. The code
+ *    should compile and run, performing a transfer bewteen two accounts.
  */
 
-// TODO: implement the `Card` interface
-public class CreditCard() : Card
-
-public interface Card {
-    public fun getCardHolderName(): String
-    public fun getCardNumber(): String
-    public fun getCvvNumber(): String
-    public fun getCardExpiration(): LocalDate
-    public fun showBalance(): String
-    public fun getAccount(): Account
-    public fun transfer(to: Account, amountPence: Long)
-}
+public class DebitCard(
+    private val cardData: DebitCardData,
+    private val account: Account
+): Card
