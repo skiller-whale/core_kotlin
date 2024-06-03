@@ -40,6 +40,6 @@ interface Card : Withdrawable, CardData {
  */
 
 public class DebitCard(
-    private val cardData: DebitCardData,
-    private val account: Account
+    private val cardData: DebitCardData,  // DebitCardData is a class that implements CardData
+    private val account: CurrentAccount,  // CurrentAccount is a class that implements Account
 ): Card
