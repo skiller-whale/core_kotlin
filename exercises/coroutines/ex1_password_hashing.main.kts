@@ -24,15 +24,6 @@ This process is deliberately CPU expensive, to make brute-force attacks hard.
 
 * What do you notice?
 
-Note:
-the imported PASSWORDS is a dictionary mapping from username to password, e.g:
-{
-    "geri.hallibut@gmail.com":       "password123",
-    "sealion@dion.com":              "better9098!pw01",
-    "w.a.floatzart@music.com":       "iHEARTsymphonies",
-}
-
-The below functions are provided and you don't need to edit them.
 **/
 
 fun ByteArray.toHexString() = joinToString("") { it.toString(16).padStart(2, '0') }
@@ -40,7 +31,7 @@ fun ByteArray.toHexString() = joinToString("") { it.toString(16).padStart(2, '0'
 /**
  * A function that hashes a password and returns the hash as a String.
  */
-fun hashPassword(password: String, iterations: Int = 100_000): String {
+fun hashPassword(password: String, iterations: Int = 1_000_000): String {
     val salt = ByteArray(32)
     Random(42).nextBytes(salt)
 
@@ -74,4 +65,4 @@ val timeTaken = measureTime {
 }
 
 
-println("Done in $timeTaken.")
+println("Done in $timeTaken ms.")

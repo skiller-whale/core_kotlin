@@ -38,4 +38,4 @@ val totalTime = measureTimeMillis {
     }
 }
 
-println("All done in ${totalTime}s")
+println("All done in ${totalTime} ms.")
