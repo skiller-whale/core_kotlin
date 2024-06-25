@@ -1,3 +1,6 @@
+@file:Repository("https://repo.maven.apache.org/maven2/")
+@file:DependsOn("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+
 // The fake_requests module is used to fake slow web requests
 @file:Import("fake_requests.kts")
 import kotlinx.coroutines.*
