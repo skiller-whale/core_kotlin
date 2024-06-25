@@ -1,7 +1,10 @@
+@file:Repository("https://repo.maven.apache.org/maven2/")
+@file:DependsOn("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+
 import javax.crypto.SecretKeyFactory
 import javax.crypto.spec.PBEKeySpec
 import kotlin.random.Random
-import kotlin.time.measureTime
+import kotlin.system.measureTimeMillis
 import kotlinx.coroutines.*
 
 /**
@@ -56,7 +59,7 @@ val PASSWORDS = hashMapOf(
     "w.a.floatzart@music.com"       to "another-weakish-password",
 )
 
-val timeTaken = measureTime {
+val timeTaken = measureTimeMillis {
     PASSWORDS.forEach { (key, value) ->
         val passHash = hashPassword(value)
 

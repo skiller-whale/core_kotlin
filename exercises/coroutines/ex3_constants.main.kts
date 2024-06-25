@@ -1,4 +1,7 @@
-import kotlin.time.measureTime
+@file:Repository("https://repo.maven.apache.org/maven2/")
+@file:DependsOn("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
+
+import kotlin.system.measureTimeMillis
 import kotlinx.coroutines.*
 
 /**
@@ -64,7 +67,7 @@ suspend fun computeConstants(): HashMap<String, Double> {
     )
 }
 
-val timeTaken = measureTime {
+val timeTaken = measureTimeMillis {
     runBlocking {
         launch {
             println(computeConstants())
@@ -72,4 +75,4 @@ val timeTaken = measureTime {
     }
 }
 
-println("Done in $timeTaken.")
+println("Done in $timeTaken ms.")
