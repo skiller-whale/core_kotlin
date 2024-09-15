@@ -12,6 +12,9 @@ RUN ln -s /usr/local/kotlinc/bin/kotlin /usr/local/bin
 RUN ln -s /usr/local/kotlinc/bin/kotlinc /usr/local/bin
 RUN kotlin -e 'println("Hello from Kotlin")'
 
+RUN echo > /root/.bashrc
+RUN echo "PS1=':whale:\[\033[01;32m\]\u@:\[\033[01;34m\]\W\[\033[00m\] \$ '" >> /root/.bashrc
+
 RUN printf '#!/bin/sh\nexec kotlinc -J-ea -script "$@"' > /usr/local/bin/run_kts && \
     chmod +x /usr/local/bin/run_kts
 
